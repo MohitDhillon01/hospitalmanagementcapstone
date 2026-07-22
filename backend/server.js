@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+console.log("🔥🔥🔥 NEW DEPLOY WORKING");
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import patientRoutes from './routes/patientRoutes.js';
@@ -8,6 +9,7 @@ import doctorRoutes from './routes/doctorRoutes.js';
 import appointmentRoutes from './routes/appointmentRoutes.js';
 import departmentRoutes from './routes/departmentRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
+
 
 // Load environment variables
 dotenv.config();
