@@ -1,7 +1,7 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .dashboard-content {
@@ -14,179 +14,251 @@
   flex: 1;
   overflow-y: auto;
   padding: 2rem;
-  background-color: #f5f5f5;
+  background: transparent;
 }
 
 .dashboard-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
+  padding: 1.1rem 1.2rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
 }
 
 .dashboard-header h1 {
   font-size: 2rem;
-  color: #333;
-  margin-bottom: 0.5rem;
+  color: #172033;
+  margin-bottom: 0.35rem;
 }
 
 .dashboard-header p {
-  color: #666;
+  color: #64748b;
   font-size: 1rem;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .stat-card {
+  position: relative;
+  overflow: hidden;
   background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-card:nth-child(2) { animation-delay: 0.08s; }
+.stat-card:nth-child(3) { animation-delay: 0.16s; }
+.stat-card:nth-child(4) { animation-delay: 0.24s; }
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent);
+  pointer-events: none;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
 }
 
 .stat-card.primary {
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #2563eb;
 }
 
 .stat-card.secondary {
-  border-left: 4px solid #764ba2;
+  border-left: 4px solid #8b5cf6;
 }
 
 .stat-card.success {
-  border-left: 4px solid #27ae60;
+  border-left: 4px solid #16a34a;
 }
 
 .stat-card.warning {
-  border-left: 4px solid #f39c12;
+  border-left: 4px solid #f59e0b;
 }
 
 .stat-icon {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .stat-info h3 {
-  color: #666;
-  font-size: 0.9rem;
+  color: #64748b;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .stat-number {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #111827;
 }
 
 .secondary-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.stats-section {
+.stats-section,
+.recent-section {
   background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e5e7eb;
 }
 
-.stats-section h2 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1rem;
+.stats-section h2,
+.recent-section h2 {
+  font-size: 1.1rem;
+  color: #172033;
+  margin-bottom: 0.9rem;
 }
 
 .sub-stats {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.7rem;
 }
 
 .sub-stat {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem;
-  background-color: #f9f9f9;
-  border-radius: 4px;
+  padding: 0.8rem 0.95rem;
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.95));
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.sub-stat:hover {
+  transform: translateX(3px);
 }
 
 .sub-stat span:first-child {
-  color: #666;
-  font-weight: 500;
+  color: #64748b;
+  font-weight: 600;
 }
 
 .number {
-  font-weight: bold;
-  color: #667eea;
-  font-size: 1.1rem;
-}
-
-.recent-section {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.recent-section h2 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1rem;
+  font-weight: 800;
+  color: #2563eb;
+  font-size: 1.05rem;
 }
 
 .status {
   display: inline-block;
   padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .status-scheduled {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  background-color: #dbeafe;
+  color: #1d4ed8;
 }
 
 .status-completed {
-  background-color: #e8f5e9;
-  color: #388e3c;
+  background-color: #dcfce7;
+  color: #15803d;
 }
 
 .status-cancelled {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: #fee2e2;
+  color: #b91c1c;
 }
 
 .status-nontactive,
 .status-inactive {
-  background-color: #fff3e0;
-  color: #e65100;
+  background-color: #ffedd5;
+  color: #c2410c;
 }
 
 .status-admitted,
 .status-active,
 .status-available {
-  background-color: #e8f5e9;
-  color: #388e3c;
+  background-color: #dcfce7;
+  color: #15803d;
 }
 
 .status-onleave {
-  background-color: #fff3e0;
-  color: #e65100;
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+
+.table-responsive {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table thead {
+  background: linear-gradient(90deg, #eff6ff, #f8fafc);
+}
+
+.data-table th {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.data-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #eef2f7;
+  color: #475569;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
